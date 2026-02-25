@@ -39,7 +39,7 @@ const WORDS = [
   // Lieux & décors
   "fête foraine", "gratte-ciel", "labyrinthe", "igloo", "oasis",
   "plongeoir", "téléphérique", "grenier", "vestiaire",
-  "cabane dans les arbres", "ring de boxe",
+  "manoir hanté", "aquarium",
 
   // Métiers & rôles
   "cascadeur", "dompteur", "clown", "mime", "espion", "astronaute",
@@ -51,7 +51,7 @@ const WORDS = [
 
   // Sport & jeux
   "plongeon", "salto", "penalty", "rodéo", "marathon", "luge",
-  "tir à l'arc", "balle au prisonnier", "escape game",
+  "tir à l'arc", "bras de fer", "colin-maillard",
 
   // Créatures & imaginaire
   "loup-garou", "yéti", "licorne", "sirène", "zombie", "momie",
@@ -60,7 +60,7 @@ const WORDS = [
   // Situations
   "embouteillage", "déménagement", "coup de soleil", "fou rire",
   "tour de magie", "cache-cache", "grasse matinée", "chasse au trésor",
-  "bataille de polochons",
+  "bain de minuit",
 
   // Sensations & corps
   "chatouille", "hoquet", "éternuement", "vertige", "chair de poule",
@@ -70,13 +70,12 @@ const WORDS = [
 
   // Situations complexes
   "gueule de bois", "coup de foudre", "mal de mer", "nuit blanche",
-  "panne de réveil", "coupure de courant", "panne d'ascenseur",
-  "heure de pointe", "contrôle d'identité",
+  "panne d'ascenseur", "heure de pointe", "blackout",
 
   // Scènes de vie
-  "feu d'artifice", "poisson d'avril", "photo de famille",
-  "lancer de bouquet", "dîner aux chandelles", "réunion de famille",
-  "rentrée des classes", "standing ovation", "alarme incendie",
+  "feu d'artifice", "poisson d'avril", "rentrée des classes",
+  "alarme incendie", "mariage", "baptême", "crémaillère",
+  "pot de départ", "réveillon",
 
   // Concepts visuels
   "tapis volant", "boule de cristal", "coffre au trésor",
@@ -84,11 +83,10 @@ const WORDS = [
   "toile d'araignée", "nid de guêpes",
 
   // Culture & activités
-  "karaoké", "selfie", "brunch", "apéro", "camping sauvage",
+  "karaoké", "selfie", "brunch", "apéro",
 
   // Le truc improbable
-  "somnambule", "papillon dans le ventre", "point de côté",
-  "queue de poisson", "ola", "pierre-feuille-ciseaux",
-  "patinage artistique", "saut à l'élastique",
-  "chef d'orchestre", "commissaire-priseur",
+  "somnambule", "queue de poisson", "ola",
+  "attrape-rêves", "saut à l'élastique",
+  "chef d'orchestre", "amnésie", "sourdine",
 ];

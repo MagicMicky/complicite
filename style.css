@@ -91,6 +91,36 @@ h2 {
   font-weight: 700;
 }
 
+/* Rules card */
+.rules-card {
+  width: 100%;
+  max-width: 320px;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.rules-title {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: var(--text-muted);
+}
+
+.rules-list {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.rules-list strong {
+  color: var(--accent);
+}
+
 /* Buttons */
 .btn {
   border: none;
