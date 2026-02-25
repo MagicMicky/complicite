@@ -486,6 +486,15 @@ h2 {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Version tag */
+.version-tag {
+  margin-top: auto;
+  padding-top: 24px;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  opacity: 0.4;
+}
+
 /* Safe area for notched phones */
 @supports (padding-top: env(safe-area-inset-top)) {
   .screen-content {

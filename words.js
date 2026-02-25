@@ -1,76 +1,94 @@
 const WORDS = [
-  // Animaux
-  "chien", "chat", "oiseau", "poisson", "cheval", "vache", "cochon", "mouton",
-  "lapin", "serpent", "tigre", "lion", "éléphant", "girafe", "dauphin", "baleine",
-  "papillon", "fourmi", "araignée", "tortue", "grenouille", "aigle", "loup", "renard",
-  "ours", "singe", "crocodile", "pingouin", "requin", "hibou",
+  // === FACILE (~30%) — concrets, un mot, tout le monde trouve vite ===
 
-  // Nourriture & boissons
-  "pizza", "fromage", "chocolat", "gâteau", "pain", "beurre", "salade", "soupe",
-  "crêpe", "croissant", "pomme", "banane", "fraise", "cerise", "citron", "orange",
-  "tomate", "carotte", "oignon", "champignon", "poulet", "jambon", "saucisse",
-  "glace", "bonbon", "biscuit", "confiture", "miel", "café", "thé",
+  // Animaux courants
+  "chat", "chien", "loup", "ours", "singe", "requin", "aigle", "tortue",
+  "grenouille", "papillon", "dauphin", "perroquet", "pingouin", "hibou",
 
-  // Maison & objets
-  "maison", "table", "chaise", "lit", "porte", "fenêtre", "miroir", "lampe",
-  "télévision", "téléphone", "ordinateur", "clavier", "souris", "horloge", "réveil",
-  "coussin", "couverture", "étagère", "tiroir", "escalier", "tapis", "rideau",
-  "fourchette", "couteau", "cuillère", "assiette", "verre", "casserole", "poubelle",
+  // Nourriture simple
+  "pizza", "chocolat", "crêpe", "croissant", "fromage", "gâteau",
+  "glace", "bonbon", "hamburger", "spaghetti",
 
-  // Vêtements & accessoires
-  "chapeau", "écharpe", "gant", "ceinture", "lunettes", "montre", "bague",
-  "collier", "chaussure", "botte", "pantalon", "chemise", "robe", "jupe",
-  "manteau", "parapluie", "sac", "portefeuille", "cravate", "pyjama",
+  // Objets concrets
+  "parapluie", "miroir", "bougie", "ballon", "guitare", "épée",
+  "couronne", "jumelles", "drapeau", "échelle", "marteau", "loupe",
 
-  // Nature & extérieur
-  "arbre", "fleur", "montagne", "rivière", "océan", "plage", "forêt", "désert",
-  "volcan", "cascade", "île", "lac", "nuage", "étoile", "soleil", "lune",
-  "arc-en-ciel", "tempête", "neige", "tonnerre", "jardin", "prairie", "grotte",
+  // Lieux évidents
+  "plage", "volcan", "château", "prison", "cirque", "phare",
 
-  // Transport
-  "voiture", "vélo", "avion", "train", "bateau", "moto", "bus", "camion",
-  "hélicoptère", "fusée", "métro", "tramway", "trottinette", "ambulance",
-  "sous-marin", "montgolfière",
+  // Créatures connues
+  "dinosaure", "fantôme", "dragon", "vampire", "pirate", "robot",
 
-  // Lieux
-  "école", "hôpital", "bibliothèque", "cinéma", "restaurant", "boulangerie",
-  "pharmacie", "église", "château", "prison", "musée", "théâtre", "stade",
-  "aéroport", "gare", "supermarché", "piscine", "zoo", "cirque", "camping",
+  // === MOYEN (~50%) — un ou deux mots, nécessite des indices créatifs ===
 
-  // Corps & santé
-  "main", "pied", "tête", "bouche", "nez", "oreille", "genou", "coude",
-  "épaule", "cerveau", "coeur", "muscle", "squelette", "dent", "langue",
+  // Animaux moins évidents
+  "caméléon", "pieuvre", "hérisson", "flamant rose", "méduse",
+  "hippopotame", "autruche", "piranha", "koala", "paon", "scorpion",
 
-  // Métiers
-  "médecin", "pompier", "policier", "boulanger", "astronaute", "pilote",
-  "plombier", "architecte", "dentiste", "facteur", "cuisinier", "coiffeur",
-  "agriculteur", "magicien", "pirate",
+  // Nourriture évocatrice
+  "fondue", "raclette", "ratatouille", "guimauve", "barbapapa",
+  "gaufre", "bretzel", "macaron", "choucroute", "pot-au-feu",
 
-  // Sport & loisirs
-  "football", "basketball", "tennis", "natation", "ski", "guitare", "piano",
-  "batterie", "peinture", "danse", "yoga", "surf", "escalade", "pêche",
-  "échecs", "puzzle", "karaoké", "bowling", "billard",
+  // Objets & trucs
+  "épouvantail", "boomerang", "cerf-volant", "sablier", "catapulte",
+  "toboggan", "trampoline", "tyrolienne", "kaléidoscope", "boussole",
+  "nain de jardin", "cocotte-minute", "talkie-walkie", "piñata",
+  "moulin à vent", "lampe à lave", "boule à neige", "confettis",
+  "mégaphone", "chandelier",
 
-  // Concepts & divers
-  "fantôme", "robot", "dinosaure", "trésor", "couronne", "épée", "bouclier",
-  "dragon", "licorne", "sirène", "vampire", "momie", "sorcière", "fée",
-  "prince", "chevalier", "ninja", "zombie",
+  // Lieux & décors
+  "fête foraine", "gratte-ciel", "labyrinthe", "igloo", "oasis",
+  "plongeoir", "téléphérique", "grenier", "vestiaire",
+  "cabane dans les arbres", "ring de boxe",
 
-  // Objets du quotidien
-  "clé", "bougie", "ciseaux", "stylo", "crayon", "gomme", "livre", "journal",
-  "enveloppe", "timbre", "carte", "drapeau", "ballon", "corde", "échelle",
-  "marteau", "tournevis", "pelle", "brosse", "savon", "serviette", "peigne",
+  // Métiers & rôles
+  "cascadeur", "dompteur", "clown", "mime", "espion", "astronaute",
+  "arbitre", "funambule", "ventriloque", "pickpocket", "fakir",
 
-  // Technologie & moderne
-  "satellite", "antenne", "batterie", "caméra", "microphone", "casque",
-  "imprimante", "scanner", "tablette", "console", "manette", "drone",
+  // Nature & phénomènes
+  "avalanche", "tornade", "arc-en-ciel", "éclipse", "geyser",
+  "stalactite", "mirage", "sables mouvants", "aurore boréale",
 
-  // Nourriture (suite)
-  "spaghetti", "hamburger", "sandwich", "omelette", "yaourt", "popcorn",
-  "brioche", "tarte", "macaron", "fondue",
+  // Sport & jeux
+  "plongeon", "salto", "penalty", "rodéo", "marathon", "luge",
+  "tir à l'arc", "balle au prisonnier", "escape game",
 
-  // Divers
-  "parachute", "trampoline", "toboggan", "balançoire", "carrousel",
-  "aquarium", "télescope", "microscope", "boussole", "sablier",
-  "calendrier", "thermomètre", "stéthoscope", "jumelles", "loupe"
+  // Créatures & imaginaire
+  "loup-garou", "yéti", "licorne", "sirène", "zombie", "momie",
+  "cyclope", "centaure", "sorcière", "lutin", "extraterrestre",
+
+  // Situations
+  "embouteillage", "déménagement", "coup de soleil", "fou rire",
+  "tour de magie", "cache-cache", "grasse matinée", "chasse au trésor",
+  "bataille de polochons",
+
+  // Sensations & corps
+  "chatouille", "hoquet", "éternuement", "vertige", "chair de poule",
+  "torticolis", "crampe", "ronflement",
+
+  // === DIFFICILE (~20%) — expressions, concepts, force le détour ===
+
+  // Situations complexes
+  "gueule de bois", "coup de foudre", "mal de mer", "nuit blanche",
+  "panne de réveil", "coupure de courant", "panne d'ascenseur",
+  "heure de pointe", "contrôle d'identité",
+
+  // Scènes de vie
+  "feu d'artifice", "poisson d'avril", "photo de famille",
+  "lancer de bouquet", "dîner aux chandelles", "réunion de famille",
+  "rentrée des classes", "standing ovation", "alarme incendie",
+
+  // Concepts visuels
+  "tapis volant", "boule de cristal", "coffre au trésor",
+  "potion magique", "passage secret", "château de sable",
+  "toile d'araignée", "nid de guêpes",
+
+  // Culture & activités
+  "karaoké", "selfie", "brunch", "apéro", "camping sauvage",
+
+  // Le truc improbable
+  "somnambule", "papillon dans le ventre", "point de côté",
+  "queue de poisson", "ola", "pierre-feuille-ciseaux",
+  "patinage artistique", "saut à l'élastique",
+  "chef d'orchestre", "commissaire-priseur",
 ];
