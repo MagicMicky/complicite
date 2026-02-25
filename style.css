@@ -1,0 +1,495 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #1a1a2e;
+  --bg-card: #16213e;
+  --bg-input: #0f3460;
+  --text: #eee;
+  --text-muted: #8892a4;
+  --accent: #e94560;
+  --accent-glow: rgba(233, 69, 96, 0.3);
+  --team0: #4fc3f7;
+  --team0-bg: rgba(79, 195, 247, 0.15);
+  --team1: #ffb74d;
+  --team1-bg: rgba(255, 183, 77, 0.15);
+  --success: #66bb6a;
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#app {
+  height: 100%;
+  position: relative;
+}
+
+/* Screens */
+.screen {
+  position: absolute;
+  inset: 0;
+  display: none;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.screen.active {
+  display: flex;
+}
+
+.screen-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 24px;
+  width: 100%;
+  min-height: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* Typography */
+.game-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.highlight {
+  color: var(--accent);
+  font-size: 3rem;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+/* Buttons */
+.btn {
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s, opacity 0.15s;
+  padding: 16px 32px;
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+  font-family: inherit;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+
+.btn-large {
+  padding: 20px 32px;
+  font-size: 1.2rem;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+  padding: 12px;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 2px solid var(--text-muted);
+}
+
+.btn-small {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 1.4rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-team {
+  border: none;
+  color: white;
+  font-weight: 700;
+}
+
+.btn-team-0 {
+  background: var(--team0);
+  color: #1a1a2e;
+}
+
+.btn-team-1 {
+  background: var(--team1);
+  color: #1a1a2e;
+}
+
+.btn-nobody {
+  padding: 14px;
+  font-size: 1rem;
+}
+
+/* Settings */
+.setting-group {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-card);
+  padding: 16px 20px;
+  border-radius: var(--radius);
+}
+
+.setting-group label {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.setting-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.setting-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  min-width: 36px;
+  text-align: center;
+}
+
+/* Team config */
+.team-config {
+  width: 100%;
+  max-width: 320px;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.team-config[data-team="0"] {
+  border-left: 4px solid var(--team0);
+}
+
+.team-config[data-team="1"] {
+  border-left: 4px solid var(--team1);
+}
+
+.input-team-name,
+.input-player {
+  width: 100%;
+  padding: 14px 16px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--bg-input);
+  color: var(--text);
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+}
+
+.input-team-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.input-team-name:focus,
+.input-player:focus {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.input-player::placeholder,
+.input-team-name::placeholder {
+  color: var(--text-muted);
+}
+
+/* Tour screen */
+.round-info {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.score-mini {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.mini-vs {
+  color: var(--text-muted);
+}
+
+.turn-announcement {
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.current-player {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin: 8px 0;
+}
+
+.turn-hint {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+/* Word screen */
+.word-label {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.word-display {
+  font-size: 2.6rem;
+  font-weight: 800;
+  text-align: center;
+  padding: 32px 24px;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  width: 100%;
+  max-width: 320px;
+  word-break: break-word;
+}
+
+/* Timer */
+.timer-container {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-ring {
+  position: absolute;
+  inset: 0;
+  transform: rotate(-90deg);
+}
+
+.timer-ring-bg {
+  fill: none;
+  stroke: var(--bg-card);
+  stroke-width: 8;
+}
+
+.timer-ring-progress {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 339.292;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear, stroke 0.3s;
+}
+
+.timer-ring-progress.warning {
+  stroke: var(--team1);
+}
+
+.timer-ring-progress.danger {
+  stroke: var(--accent);
+}
+
+.timer-text {
+  font-size: 3rem;
+  font-weight: 800;
+  z-index: 1;
+}
+
+.timer-text.warning {
+  color: var(--team1);
+}
+
+.timer-text.danger {
+  color: var(--accent);
+  animation: pulse 0.5s infinite alternate;
+}
+
+@keyframes pulse {
+  to { transform: scale(1.1); }
+}
+
+.word-reminder {
+  font-size: 1rem;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  padding: 8px 20px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.guess-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 320px;
+}
+
+/* Scores screen */
+.round-result {
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  width: 100%;
+  max-width: 320px;
+}
+
+.scoreboard {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.score-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 16px;
+  border-radius: var(--radius);
+  background: var(--bg-card);
+}
+
+.score-card-0 {
+  border-top: 4px solid var(--team0);
+}
+
+.score-card-1 {
+  border-top: 4px solid var(--team1);
+}
+
+.score-team-name {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.score-value {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.score-card-0 .score-value {
+  color: var(--team0);
+}
+
+.score-card-1 .score-value {
+  color: var(--team1);
+}
+
+/* Victory screen */
+.victory-animation {
+  font-size: 4rem;
+  animation: bounce 0.6s ease infinite alternate;
+}
+
+@keyframes bounce {
+  to { transform: translateY(-12px); }
+}
+
+.victory-title {
+  font-size: 2.4rem;
+  color: var(--success);
+}
+
+.victory-team {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.victory-subtitle {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.final-scores {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.final-score {
+  padding: 6px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+}
+
+.final-vs {
+  color: var(--text-muted);
+}
+
+/* Screen transitions */
+.screen {
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Safe area for notched phones */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .screen-content {
+    padding-top: calc(40px + env(safe-area-inset-top));
+    padding-bottom: calc(40px + env(safe-area-inset-bottom));
+  }
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#1a1a2e">
+  <meta name="description" content="Jeu de la Complicité - Jeu de devinettes en équipes">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.svg">
+  <link rel="stylesheet" href="style.css?v=__CACHE_HASH__">
+  <title>Jeu de la Complicité</title>
+</head>
+<body>
+  <div id="app">
+
+    <!-- Écran d'accueil -->
+    <section id="screen-accueil" class="screen active">
+      <div class="screen-content">
+        <h1 class="game-title">Jeu de la<br><span class="highlight">Complicité</span></h1>
+        <p class="subtitle">Le jeu de devinettes en équipes</p>
+        <button id="btn-new-game" class="btn btn-primary btn-large">Nouvelle partie</button>
+        <button id="btn-settings" class="btn btn-ghost">Paramètres</button>
+      </div>
+    </section>
+
+    <!-- Écran paramètres -->
+    <section id="screen-settings" class="screen">
+      <div class="screen-content">
+        <h2>Paramètres</h2>
+        <div class="setting-group">
+          <label for="setting-score">Score pour gagner</label>
+          <div class="setting-control">
+            <button class="btn btn-small btn-outline" data-adjust="score" data-delta="-1">−</button>
+            <span id="setting-score" class="setting-value">5</span>
+            <button class="btn btn-small btn-outline" data-adjust="score" data-delta="1">+</button>
+          </div>
+        </div>
+        <div class="setting-group">
+          <label for="setting-timer">Temps par manche (sec)</label>
+          <div class="setting-control">
+            <button class="btn btn-small btn-outline" data-adjust="timer" data-delta="-10">−</button>
+            <span id="setting-timer" class="setting-value">60</span>
+            <button class="btn btn-small btn-outline" data-adjust="timer" data-delta="10">+</button>
+          </div>
+        </div>
+        <button id="btn-settings-back" class="btn btn-primary">Retour</button>
+      </div>
+    </section>
+
+    <!-- Écran configuration -->
+    <section id="screen-config" class="screen">
+      <div class="screen-content">
+        <h2>Équipes</h2>
+        <div class="team-config" data-team="0">
+          <div class="team-name-input">
+            <input type="text" id="team0-name" class="input-team-name" placeholder="Équipe 1" maxlength="20">
+          </div>
+          <input type="text" id="team0-player0" class="input-player" placeholder="Joueur 1" maxlength="20">
+          <input type="text" id="team0-player1" class="input-player" placeholder="Joueur 2" maxlength="20">
+        </div>
+        <div class="team-config" data-team="1">
+          <div class="team-name-input">
+            <input type="text" id="team1-name" class="input-team-name" placeholder="Équipe 2" maxlength="20">
+          </div>
+          <input type="text" id="team1-player0" class="input-player" placeholder="Joueur 1" maxlength="20">
+          <input type="text" id="team1-player1" class="input-player" placeholder="Joueur 2" maxlength="20">
+        </div>
+        <button id="btn-start-game" class="btn btn-primary btn-large">Commencer</button>
+        <button id="btn-config-back" class="btn btn-ghost">Retour</button>
+      </div>
+    </section>
+
+    <!-- Écran tour -->
+    <section id="screen-tour" class="screen">
+      <div class="screen-content">
+        <p class="round-info">Manche <span id="round-number">1</span></p>
+        <div class="score-mini">
+          <span id="mini-score-0" class="mini-team"></span>
+          <span class="mini-vs">–</span>
+          <span id="mini-score-1" class="mini-team"></span>
+        </div>
+        <div class="turn-announcement">
+          <p>C'est au tour de</p>
+          <p class="current-player" id="current-player-name">Joueur</p>
+          <p>de faire deviner !</p>
+        </div>
+        <p class="turn-hint">Les autres, regardez ailleurs !</p>
+        <button id="btn-show-word" class="btn btn-primary btn-large">Voir le mot</button>
+      </div>
+    </section>
+
+    <!-- Écran mot -->
+    <section id="screen-mot" class="screen">
+      <div class="screen-content">
+        <p class="word-label">Le mot à faire deviner :</p>
+        <div class="word-display" id="word-display">MOT</div>
+        <button id="btn-start-round" class="btn btn-primary btn-large">C'est parti !</button>
+        <button id="btn-skip-word" class="btn btn-ghost">Changer de mot</button>
+      </div>
+    </section>
+
+    <!-- Écran manche (timer) -->
+    <section id="screen-manche" class="screen">
+      <div class="screen-content">
+        <div class="timer-container">
+          <svg class="timer-ring" viewBox="0 0 120 120">
+            <circle class="timer-ring-bg" cx="60" cy="60" r="54" />
+            <circle class="timer-ring-progress" id="timer-ring" cx="60" cy="60" r="54" />
+          </svg>
+          <span class="timer-text" id="timer-text">60</span>
+        </div>
+        <div class="word-reminder" id="word-reminder">MOT</div>
+        <div class="guess-buttons">
+          <button class="btn btn-team btn-team-0" id="btn-team0-found">
+            <span id="btn-team0-label">Équipe 1</span> a trouvé !
+          </button>
+          <button class="btn btn-team btn-team-1" id="btn-team1-found">
+            <span id="btn-team1-label">Équipe 2</span> a trouvé !
+          </button>
+          <button class="btn btn-outline btn-nobody" id="btn-nobody">Personne n'a trouvé</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Écran scores -->
+    <section id="screen-scores" class="screen">
+      <div class="screen-content">
+        <h2>Scores</h2>
+        <div id="round-result" class="round-result"></div>
+        <div class="scoreboard">
+          <div class="score-card score-card-0">
+            <span class="score-team-name" id="score-name-0">Équipe 1</span>
+            <span class="score-value" id="score-value-0">0</span>
+          </div>
+          <div class="score-card score-card-1">
+            <span class="score-team-name" id="score-name-1">Équipe 2</span>
+            <span class="score-value" id="score-value-1">0</span>
+          </div>
+        </div>
+        <button id="btn-next-round" class="btn btn-primary btn-large">Manche suivante</button>
+      </div>
+    </section>
+
+    <!-- Écran victoire -->
+    <section id="screen-victoire" class="screen">
+      <div class="screen-content">
+        <div class="victory-animation" id="victory-animation">🎉</div>
+        <h2 class="victory-title">Victoire !</h2>
+        <p class="victory-team" id="victory-team">Équipe 1</p>
+        <p class="victory-subtitle">remporte la partie !</p>
+        <div class="final-scores">
+          <span id="final-score-0" class="final-score"></span>
+          <span class="final-vs">–</span>
+          <span id="final-score-1" class="final-score"></span>
+        </div>
+        <button id="btn-replay" class="btn btn-primary btn-large">Rejouer</button>
+        <button id="btn-home" class="btn btn-ghost">Accueil</button>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="words.js?v=__CACHE_HASH__"></script>
+  <script src="app.js?v=__CACHE_HASH__"></script>
+</body>
+</html>
