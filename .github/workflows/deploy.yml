@@ -26,7 +26,7 @@ jobs:
         run: |
           HASH=$(git rev-parse --short HEAD)
           echo "Cache busting with hash: $HASH"
-          sed -i "s/__CACHE_HASH__/$HASH/g" index.html sw.js
+          sed -i "s/__CACHE_HASH__/$HASH/g" index.html sw.js app.js
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
